@@ -1,20 +1,20 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
+import Box from "@mui/material/Box";
+import FishForm from "../components/FishForm";
 
 export default function Index() {
   const { data: session } = useSession();
   if (session) {
     return (
-      <>
+      <Box>
         Signed in as {session.user.email} <br />
-        <Link href="/NewFish">
-          <a>NewFish</a>
-        </Link>
-        <br />
-        <button onClick={() => signOut()}>Sign out</button>
-      </>
+        <p>Insert data for a new fish</p>
+        <FishForm />
+      </Box>
     );
   }
+
   return (
     <>
       Not signed in <br />
