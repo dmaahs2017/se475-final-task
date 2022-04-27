@@ -1,6 +1,6 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
-import LinkTree from "../components/LinkTree"
+import LinkTree from "../components/LinkTree";
 
 export default function Index() {
   const { data: session } = useSession();
@@ -21,3 +21,4 @@ export default function Index() {
     </>
   );
 }
+// sadfeafvcdf
