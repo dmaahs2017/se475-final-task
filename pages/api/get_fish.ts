@@ -17,11 +17,25 @@ export default async function handler(
   });
 
 
+  //name: string;
+  //avg_length: number;
+  //id: number;
+  //contributor: string;
+  //contributor_id: string;
   const data = await client.query(`
-      select * from fish
+      select 
+        fish.name as name, 
+        fish.avg_length as avg_length,
+        fish.id as fish_id,
+        users.id as contributor_id,
+        users.username as contributor_name
+      from fish
+      inner join users on fish.contributor_id = users.id 
   `).catch(e => { console.log(e); error = "Failed to get fish" });
 
+  console.log(data.rows)
   const fishies: Fish[] = data.rows;
+
 
 
 

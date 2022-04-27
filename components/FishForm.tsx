@@ -17,6 +17,7 @@ const FishForm = () => {
       ...formValues,
       [name]: value,
     });
+
   };
 
   const handleSubmit = (event: any) => {

@@ -9,7 +9,7 @@ import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import {Fish, GetFishResponse} from "../common/types";
 
 const columns: GridColDef[] = [
-  {field: 'id', headerName: 'ID', 'width': 100},
+  {field: 'fish_id', headerName: 'Fish ID', 'width': 100},
   { field: 'name', headerName: 'Fish Name', width: 200, editable: true },
   {
     field: 'avg_length',
@@ -17,6 +17,12 @@ const columns: GridColDef[] = [
     type: 'number',
     width: 200,
     editable: true,
+  },
+  {
+    field: 'contributor_name',
+    headerName: 'Contributor',
+    width: 400,
+    editable: false,
   },
 ];
 
@@ -42,7 +48,7 @@ const FishView = () => {
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
         experimentalFeatures={{ newEditingApi: true }}
-        getRowId={(row) => row.id}
+        getRowId={(row) => row.fish_id}
         rows={fish}
         columns={columns}
         pageSize={5}
@@ -53,16 +59,15 @@ const FishView = () => {
     </div>
   );
 
-  const Error = () => (
-    <Box>
-      <p>{error}</p>
-    </Box>
-  );
+  //const Error = () => (
+    //<Box>
+      //<p>{error}</p>
+    //</Box>
+  //);
 
   return (
     <Box>
       <Grid />
-      <Error />
     </Box>
   );
 };
