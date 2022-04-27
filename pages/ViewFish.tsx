@@ -1,7 +1,7 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import Box from "@mui/material/Box";
-import FishForm from "../components/FishForm";
+import FishView from "../components/FishView";
 import LinkTree from "../components/LinkTree";
 
 export default function Index() {
@@ -10,8 +10,9 @@ export default function Index() {
     return (
       <Box>
         Signed in as {session.user.email} <br />
-        <p>Insert data for a new fish</p>
-        <FishForm />
+        <p>Viewing Data from the Fish Table</p>
+        <FishView />
+
         <LinkTree />
       </Box>
     );

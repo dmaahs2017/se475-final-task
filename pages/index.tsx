@@ -1,5 +1,6 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
+import LinkTree from "../components/LinkTree"
 
 export default function Index() {
   const { data: session } = useSession();
@@ -7,9 +8,7 @@ export default function Index() {
     return (
       <>
         Signed in as {session.user.email} <br />
-        <Link href="/NewFish">
-          <a>NewFish</a>
-        </Link>
+        <LinkTree />
         <br />
         <button onClick={() => signOut()}>Sign out</button>
       </>
