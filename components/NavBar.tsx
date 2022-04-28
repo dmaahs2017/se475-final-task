@@ -138,7 +138,7 @@ const NavBar = (name: any) => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title={"Signed in as : ".concat(name.session)}>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar src="/images/angler.jpg" />
+                <Avatar src="/Images/angler.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
