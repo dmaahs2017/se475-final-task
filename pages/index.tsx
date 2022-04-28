@@ -1,6 +1,5 @@
 import { useSession, signIn, signOut } from "next-auth/react";
-import Link from "next/link";
-import LinkTree from "../components/LinkTree";
+import NavBar from "../components/NavBar";
 
 export default function Index() {
   const { data: session } = useSession();
@@ -8,10 +7,8 @@ export default function Index() {
     console.log(session);
     return (
       <>
-        Signed in as {session.user.email} <br />
-        <LinkTree />
+        <NavBar session={session.user!.name} />
         <br />
-        <button onClick={() => signOut()}>Sign out</button>
       </>
     );
   }

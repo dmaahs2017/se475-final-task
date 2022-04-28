@@ -96,12 +96,6 @@ const FishView = () => {
     </div>
   );
 
-  //const Error = () => (
-  //<Box>
-  //<p>{error}</p>
-  //</Box>
-  //);
-
   return (
     <Box>
       <Grid />
