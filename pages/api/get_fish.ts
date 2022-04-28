@@ -1,8 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import type {GetFishResponse, Fish} from "../../common/types";
-import { Client } from 'pg';
-import { credentials } from '../../common/creds';
-
+import type { GetFishResponse, Fish } from "../../common/types";
+import { Client } from "pg";
+import { credentials } from "../../common/creds";
 
 export default async function handler(
   req: NextApiRequest,
@@ -11,18 +10,19 @@ export default async function handler(
   let error = null;
 
   const client = new Client(credentials);
-  await client.connect().catch(e => { 
+  await client.connect().catch((e) => {
     console.log(e);
-    error = "Failed to connect to db"
+    error = "Failed to connect to db";
   });
-
 
   //name: string;
   //avg_length: number;
   //id: number;
   //contributor: string;
   //contributor_id: string;
-  const data = await client.query(`
+  const data = await client
+    .query(
+      `
       select 
         fish.name as name, 
         fish.avg_length as avg_length,
@@ -31,17 +31,19 @@ export default async function handler(
         users.username as contributor_name
       from fish
       inner join users on fish.contributor_id = users.id 
-  `).catch(e => { console.log(e); error = "Failed to get fish" });
+  `
+    )
+    .catch((e) => {
+      console.log(e);
+      error = "Failed to get fish";
+    });
 
-  console.log(data.rows)
+  console.log(data.rows);
   const fishies: Fish[] = data.rows;
 
-
-
-
   if (error) {
-    res.status(301).json({rows: [], errors: [error]})
-    return
+    res.status(301).json({ rows: [], errors: [error] });
+    return;
   }
-  res.status(200).json({rows: fishies, errors: null});
+  res.status(200).json({ rows: fishies, errors: null });
 }

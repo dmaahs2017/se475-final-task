@@ -8,7 +8,7 @@ export default function Index() {
   const { data: session } = useSession();
   if (session) {
     const name: string = session.user!.name!;
-    console.log(name)
+    console.log(name);
     return (
       <Box>
         Signed in as {session.user!.email} <br />

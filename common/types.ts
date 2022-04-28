@@ -15,6 +15,6 @@ export type Fish = {
 };
 
 export type GetFishResponse = {
-  rows: Fish[]
-  errors: string[] | null
+  rows: Fish[];
+  errors: string[] | null;
 };
