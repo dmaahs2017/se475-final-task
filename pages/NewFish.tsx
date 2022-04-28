@@ -10,9 +10,9 @@ export default function Index() {
     console.log(name);
     return (
       <Box>
-        <NavBar />
+        <NavBar session={session.user!.name} />
         <br></br>
-        <FishForm />
+        <FishForm user={name} />
       </Box>
     );
   }

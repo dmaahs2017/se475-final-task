@@ -8,7 +8,7 @@ export default function Index() {
   if (session) {
     return (
       <Box>
-        <NavBar />
+        <NavBar session={session.user!.name} />
         <br></br>
         <FishView />
       </Box>
