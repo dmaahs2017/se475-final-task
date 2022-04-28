@@ -23,3 +23,8 @@ export type SearchResponse = {
   rows: Fish[];
   errors: string[];
 };
+
+export type FishDeleteResponse = {
+  success: boolean;
+  errors: string[];
+}
