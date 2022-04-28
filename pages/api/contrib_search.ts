@@ -8,6 +8,8 @@ export default async function handler(
   res: NextApiResponse<GetFishResponse>
 ) {
   let error = null;
+  const search_param = req.body.search_param;
+  console.log(req.body);
 
   const client = new Client(credentials);
   await client.connect().catch((e) => {
@@ -26,6 +28,7 @@ export default async function handler(
         users.username as contributor_name
       from fish
       inner join users on fish.contributor_id = users.id 
+      where users.username like '%${search_param}%'
   `
     )
     .catch((e) => {
@@ -33,6 +36,7 @@ export default async function handler(
       error = "Failed to get fish";
     });
 
+  console.log("DEBUGGGG");
   const fishies: Fish[] = data.rows;
 
   if (error) {

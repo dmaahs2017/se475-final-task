@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar";
 export default function Index() {
   const { data: session } = useSession();
   if (session) {
+    console.log(session);
     return (
       <>
         <NavBar session={session.user!.name} />
