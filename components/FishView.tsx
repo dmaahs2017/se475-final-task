@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Grid from "@mui/material/Grid";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import Input from "@mui/material/Input";
 import Box from "@mui/material/Box";
 import axios from "axios";
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
-import { Fish, GetFishResponse } from "../common/types";
+import { Fish } from "../common/types";
 
 const columns: GridColDef[] = [
   { field: "fish_id", headerName: "Fish ID", width: 100 },
@@ -46,8 +44,45 @@ const FishView = () => {
     return new_values;
   };
 
+  const searchHandler = (e: any) => {
+    if (e.key !== "Enter") {
+      return;
+    }
+
+    const query = e.target.value;
+    console.log(query);
+
+    axios
+      .post("/api/search", { search_param: query })
+      .then((res) => {
+        setFish(res.data.rows);
+      })
+      .catch((e) => console.log(e));
+  };
+
+  const contribSearchHandler = (e: any) => {
+    if (e.key !== "Enter") {
+      return;
+    }
+
+    const query = e.target.value;
+    console.log(query);
+
+    axios
+      .post("/api/contrib_search", { search_param: query })
+      .then((res) => {
+        setFish(res.data.rows);
+      })
+      .catch((e) => console.log(e));
+  };
+
   const Grid = () => (
     <div style={{ height: 400, width: "100%" }}>
+      <Input onKeyPress={searchHandler} placeholder="Search by fish name" />
+      <Input
+        onKeyPress={contribSearchHandler}
+        placeholder="Search by contributor"
+      />
       <DataGrid
         experimentalFeatures={{ newEditingApi: true }}
         getRowId={(row) => row.fish_id}
