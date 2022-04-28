@@ -8,6 +8,7 @@ export default async function handler(
   res: NextApiResponse<GetFishResponse>
 ) {
   let error = null;
+  const search_param = req.body.search_param;
 
   const client = new Client(credentials);
   await client.connect().catch((e) => {
@@ -26,6 +27,7 @@ export default async function handler(
         users.username as contributor_name
       from fish
       inner join users on fish.contributor_id = users.id 
+      where fish.name like '%${search_param}%'
   `
     )
     .catch((e) => {

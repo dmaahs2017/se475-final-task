@@ -18,3 +18,8 @@ export type GetFishResponse = {
   rows: Fish[];
   errors: string[] | null;
 };
+
+export type SearchResponse = {
+  rows: Fish[];
+  errors: string[];
+};
