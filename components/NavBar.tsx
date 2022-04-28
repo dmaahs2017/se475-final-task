@@ -55,7 +55,7 @@ const NavBar = (name: any) => {
             component="div"
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
-            LOGO
+            <img src="/Images/anglerLogo.jpg" height={50} width={100} alt="" />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -138,7 +138,7 @@ const NavBar = (name: any) => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title={"Signed in as : ".concat(name.session)}>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar src="/images/angler.jpg" />
+                <Avatar src="/Images/angler.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
