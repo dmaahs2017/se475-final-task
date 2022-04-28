@@ -5,6 +5,7 @@ import LinkTree from "../components/LinkTree"
 export default function Index() {
   const { data: session } = useSession();
   if (session) {
+    console.log(session)
     return (
       <>
         Signed in as {session.user.email} <br />

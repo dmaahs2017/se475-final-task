@@ -9,7 +9,7 @@ const defaultValues = {
   avg_length: 0,
 };
 
-const FishForm = () => {
+const FishForm = (user: any) => {
   const [formValues, setFormValues] = useState(defaultValues);
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
@@ -26,7 +26,7 @@ const FishForm = () => {
       console.log("Enter new data");
       return
     }
-    axios.post("/api/new_fish", formValues).catch(e => console.log(e))
+    axios.post("/api/new_fish", { form: formValues, username: user }).catch(e => console.log(e))
   };
 
   return (
