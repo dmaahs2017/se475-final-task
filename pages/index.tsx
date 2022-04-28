@@ -9,6 +9,7 @@ export default function Index() {
       <>
         <NavBar session={session.user!.name} />
         <br />
+        <img src="/Images/welcomeFish.jpg" width={800} height={400} alt="" />
       </>
     );
   }
