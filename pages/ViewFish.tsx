@@ -12,7 +12,6 @@ export default function Index() {
         Signed in as {session.user.email} <br />
         <p>Viewing Data from the Fish Table</p>
         <FishView />
-
         <LinkTree />
       </Box>
     );

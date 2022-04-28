@@ -7,11 +7,13 @@ import LinkTree from "../components/LinkTree";
 export default function Index() {
   const { data: session } = useSession();
   if (session) {
+    const name: string = session.user!.name!;
+    console.log(name);
     return (
       <Box>
-        Signed in as {session.user.email} <br />
+        Signed in as {session.user!.email} <br />
         <p>Insert data for a new fish</p>
-        <FishForm />
+        <FishForm user={name} />
         <LinkTree />
       </Box>
     );

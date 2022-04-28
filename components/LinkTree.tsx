@@ -2,8 +2,7 @@ import Link from "next/link";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
-import {Fish, GetFishResponse} from "../common/types";
-
+import { Fish, GetFishResponse } from "../common/types";
 
 const LinkTree = () => {
   return (

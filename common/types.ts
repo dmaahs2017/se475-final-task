@@ -9,10 +9,12 @@ export type FishPutResponse = {
 export type Fish = {
   name: string;
   avg_length: number;
-  id: number;
+  fish_id: number;
+  contributor_name: string;
+  contributor_id: string;
 };
 
 export type GetFishResponse = {
-  rows: Fish[]
-  errors: string[] | null
+  rows: Fish[];
+  errors: string[] | null;
 };

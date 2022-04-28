@@ -9,7 +9,7 @@ const defaultValues = {
   avg_length: 0,
 };
 
-const FishForm = () => {
+const FishForm = (user: any) => {
   const [formValues, setFormValues] = useState(defaultValues);
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
@@ -21,16 +21,21 @@ const FishForm = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    if ( formValues.name === defaultValues.name || formValues.avg_length === defaultValues.avg_length ) {
+    if (
+      formValues.name === defaultValues.name ||
+      formValues.avg_length === defaultValues.avg_length
+    ) {
       console.log("Enter new data");
-      return
+      return;
     }
-    axios.post("/api/new_fish", formValues).catch(e => console.log(e))
+    axios
+      .post("/api/new_fish", { form: formValues, username: user })
+      .catch((e) => console.log(e));
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <Grid container >
+      <Grid container>
         <Grid item>
           <TextField
             id="name-input"
